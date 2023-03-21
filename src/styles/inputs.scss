@@ -1,0 +1,6 @@
+.errorInput {
+  border-color: #ff3232;
+  &, &::placeholder {
+    color : #ff3232;
+  }
+}
