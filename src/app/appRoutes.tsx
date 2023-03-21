@@ -5,9 +5,9 @@ import ErrorPage from "../components/errorPage/errorPage"
 
 function AppRoutes() {
     return (<Routes>
-        <Route path={"/amo-labs/"} element={<MainPage />} />
-        <Route path={"/amo-labs/labs/1"} element={<FirstLab />} />
-        <Route path={"*"} element={<ErrorPage header={"404"} subtext={"Not found"} />} />
+        <Route path={"/"} element={<MainPage />} />
+        <Route path={"/labs/1"} element={<FirstLab />} />
+        <Route path={"*"} element={<ErrorPage header={"404"} subtext={"Page not found"} />} />
     </Routes>)
 }
 
