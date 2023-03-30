@@ -19,7 +19,7 @@ function RamifiedAlgorithm() {
 
     return (<div className={"algorithm-block"}>
         <h1>Розгалужений алгоритм</h1>
-        <img width={"300"} src={algorithmImage} />
+        <img alt={""} width={"300"} src={algorithmImage} />
         <NumberInput className={"classicInput"} placeholder={"Введіть число a"} onChange={setA} />
         <NumberInput className={"classicInput"} placeholder={"Введіть число b"} onChange={setB} />
         <NumberInput className={"classicInput"} placeholder={"Введіть число c"} onChange={setC} />

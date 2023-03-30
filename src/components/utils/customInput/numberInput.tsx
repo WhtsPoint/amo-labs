@@ -1,4 +1,3 @@
-import {ChangeEvent} from "react"
 import ICustomInputParams from "./ICustomInputParams"
 import CustomInput from "./customInput"
 
@@ -10,11 +9,11 @@ function NumberInput(params : IParams) {
 
     const {onChange, min} = params
 
-    const onTyped = ({target} : ChangeEvent<HTMLInputElement>) => {
-        const value = Number(target.value)
-        if(isNaN(value) || target.value === "") return "Невірний тип числа"
-        if(min && value < min) return "Число менше, ніж мінімальне"
-        onChange && onChange(value)
+    const onTyped = (value : string) => {
+        const num = Number(value)
+        if(isNaN(num) || value === "") return "Невірний тип числа"
+        if(min && num < min) return "Число менше, ніж мінімальне"
+        onChange && onChange(num)
         return null
     }
 
