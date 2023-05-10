@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/amo-labs/static/css/main.eb444b01.css",
+    "main.js": "/amo-labs/static/js/main.3233ac10.js",
+    "static/media/ramified.png": "/amo-labs/static/media/ramified.683397fe42357f629d19.png",
+    "static/media/linear.png": "/amo-labs/static/media/linear.c7ea102b79fed75e374d.png",
+    "static/media/сycle.png": "/amo-labs/static/media/сycle.f45bd34efc46e9000aed.png",
+    "index.html": "/amo-labs/index.html",
+    "main.eb444b01.css.map": "/amo-labs/static/css/main.eb444b01.css.map",
+    "main.3233ac10.js.map": "/amo-labs/static/js/main.3233ac10.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.eb444b01.css",
+    "static/js/main.3233ac10.js"
+  ]
+}
