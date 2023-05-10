@@ -1,5 +1,6 @@
 import {countExecutionTime, randomArray, range} from "../../../utils/utils"
 import MultipleNumbersInput from "../../../utils/customInput/multipleNumbersInput"
+import useFileImport from "../../../../hooks/useFileImport"
 import IMeasuredByTime from "../IMeasuredByTime"
 import useInputList from "../../../../hooks/inputList/useInputList"
 import {bubbleFromEnd} from "../../../utils/sorts"
@@ -27,9 +28,18 @@ function InputList({onTimeMeasured}: IParams) {
         onTimeMeasured(newMeasurements)
     }
 
+    const [fileInput, openFile] = useFileImport((file) => {
+        const lines = file.replace(/\r/g, "").split("\n")
+        if(lines.some((line) => line.split(",").some((value) => isNaN(Number(value)) || value === ""))) return alert("Невірний формат файлу")
+        const newValues = lines.map((line) => line.replace(/\s/g, "").split(",").map((value) => Number(value)))
+        setArraysCount(newValues.length)
+        setDefaultValues(newValues)
+        setValues(newValues)
+    })
+
     return (<div className={"d-flex flex-column align-items-center gap-2"}>
         <div className={"d-flex flex-column gap-3"}>
-        {range(1, values.length).map((_,index) => {
+        {range(1, values.length).map((_, index) => {
             return <MultipleNumbersInput key={index}
                                          className={"classicInput"}
                                          placeholder={"Введіть масив чисел"}
@@ -39,6 +49,8 @@ function InputList({onTimeMeasured}: IParams) {
             })}
         </div>
         <div className={"d-flex gap-1"}>
+            {fileInput}
+            <button className={"classicButton"} onClick={openFile}>Імпортувати масиви файлом</button>
             <button className={"classicButton"} onClick={addArray}>Додати масив</button>
             <button className={"classicButton"} onClick={removeArray}>Видалити останній масив</button>
             <button className={"classicButton"} onClick={fillArrays}>Заповнити масиви випадковими числами</button>

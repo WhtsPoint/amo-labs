@@ -1,4 +1,4 @@
-import Plot from "react-plotly.js"
+import ScaledPlot from "../../utils/components/ScaledPlot"
 
 interface IParams {
     x: number[],
@@ -7,10 +7,7 @@ interface IParams {
 }
 
 function StyledPlot({x, y, title}: IParams) {
-    return  <Plot className={"py-4"}
-    data={[{x, y, mode: 'lines', marker: {color: 'red'}}]}
-    layout={{width: 700, height: 300, title}}
-    />
+    return <ScaledPlot data={[{x, y, mode: 'lines', marker: {color: 'red', }}]} title={title} />
 }
 
 export default StyledPlot

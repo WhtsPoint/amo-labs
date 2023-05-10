@@ -1,24 +1,28 @@
+import lagrangePolynomial from "./lagrangePolynomial"
 import {TMathFunction} from "../utils"
-import useLagrangePolynomial from "./useLagrangePolynomial"
 import {useMemo} from "react"
+import ScaledPlot from "../../../utils/components/ScaledPlot"
 
 interface IParams {
     mathFunction: TMathFunction,
     xList: number[],
-    plotXList: number[]
+    plotXList: number[],
+    name: string
 }
 
-function usePlotPolynomial({mathFunction, xList, plotXList}: IParams) {
-    const [polynomial] = useLagrangePolynomial(xList.map((x) => [x, mathFunction(x)]))
+function usePlotPolynomial({mathFunction, xList, plotXList, name}: IParams) {
+    const [polynomial] = lagrangePolynomial(xList, mathFunction)
     const plotMathYList = useMemo(() => plotXList.map(mathFunction), [mathFunction, plotXList])
     const plotDotsYList = useMemo(() => xList.map(mathFunction), [mathFunction, xList])
     const plotPolynomialYList = useMemo(() => plotXList.map(polynomial), [plotXList, polynomial])
-    
-    return [ 
-        {x: plotXList, y: plotMathYList},
-        {x: plotXList, y: plotPolynomialYList},
-        {x: xList, y: plotDotsYList}
+
+    const data = [
+        { x: plotXList, y: plotMathYList, name: "Оригінальна функція"},
+        { x: plotXList, y: plotPolynomialYList, name: "Поліном" },
+        { x: xList, y: plotDotsYList, name: "" }
     ]
+
+    return (<ScaledPlot data={data} title={name}/>)
 }
 
 export default usePlotPolynomial

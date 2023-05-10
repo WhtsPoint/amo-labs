@@ -1,6 +1,6 @@
 function bubbleFromEnd(values: number[]) {
     const n = values.length
-    let replacement = false
+    let replacement;
     do {
         replacement = false
         for(let i = 0; i < n; i++) {

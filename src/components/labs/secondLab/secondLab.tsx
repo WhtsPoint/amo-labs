@@ -1,8 +1,8 @@
 import InputList from "./inputList/inputList"
 import {useState} from "react"
 import IMeasuredByTime from "./IMeasuredByTime"
-import "../utils.scss"
 import StyledPlot from "./styledPlot"
+import "../utils.scss"
 
 function SecondLab() {
     const [measurements, setMeasurements] = useState<IMeasuredByTime[]>([])
