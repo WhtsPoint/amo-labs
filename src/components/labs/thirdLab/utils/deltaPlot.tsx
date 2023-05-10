@@ -1,6 +1,7 @@
 import lagrangePolynomial from "./lagrangePolynomial"
 import {TMathFunction} from "../utils"
 import ScaledPlot from "../../../utils/components/ScaledPlot"
+import Decimal from "decimal.js"
 
 interface IParams {
     xList: number[],
@@ -13,10 +14,11 @@ function DeltaPlot({ xList, mathFunction, nodeCount, plotXList }: IParams) {
     const [polynomial] = lagrangePolynomial(xList.slice(0, nodeCount), mathFunction)
     const [nextPolynomial] = lagrangePolynomial(xList.slice(0, nodeCount + 1), mathFunction)
     const deltaFunction = (x: number) => {
-        const realX = x //(x - xList[j]) / (xList[j + 1] - xList[j])
-        return -Math.log(Math.abs(polynomial(realX) - nextPolynomial(realX)))
+        const realX = x
+        return -Math.log(polynomial(realX) - nextPolynomial(realX))
     }
 
+    console.log(plotXList, plotXList.map(deltaFunction))
     return (<ScaledPlot data={[{
         x: plotXList,
         y: plotXList.map(deltaFunction)

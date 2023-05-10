@@ -15,7 +15,7 @@ function CustomInput({onChange, onError, className, placeholder, defaultValue, v
 
     const onTyped = (event : ChangeEvent<HTMLInputElement>) => onChange && setError(onChange(event.target.value) || null)
 
-    return (<input defaultValue={defaultValue} value={value} onChange={onTyped} className={clsx(className, error && "errorInput")} placeholder={placeholder} />)
+    return (<input defaultValue={defaultValue} onChange={onTyped} className={clsx(className, error && "errorInput")} placeholder={placeholder} />)
 }
 
 export default CustomInput

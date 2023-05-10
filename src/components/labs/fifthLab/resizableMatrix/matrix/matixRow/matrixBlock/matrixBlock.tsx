@@ -1,14 +1,12 @@
-import NumberInput from "../../../../../../utils/customInput/numberInput"
-
 interface IParams {
     text: string | null,
-    onChange: (value: number) => any,
-    value?: number
+    onChange: (value: string) => any,
+    value?: string
 }
 
-function MatrixBlock({text, onChange, value}: IParams) {
+function MatrixBlock({text, value, onChange}: IParams) {
     return (<div className={"d-flex align-items-center gap-1"}>
-        <NumberInput className={"classicInput input-1x1"} value={value} onChange={onChange} />
+        <input className={"classicInput input-1x1"} value={value} onChange={({target}) => onChange(target.value)} />
         <span style={{width: 50}}>{text}</span>
     </div>)
 }

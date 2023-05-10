@@ -4,13 +4,13 @@ import MatrixRow from "./matixRow/matrixRow"
 
 interface IParams {
     size: number,
-    values: number[][],
-    onChange: (values: number[][]) => any
+    values: string[][],
+    onChange: (values: string[][]) => any
 }
 
 function Matrix({size, values, onChange}: IParams) {
 
-    const onMatrixChanged = (column: number, row: number[]) => {
+    const onMatrixChanged = (column: number, row: string[]) => {
         const newValues = [...values]
         newValues[column] = row
         onChange(newValues)

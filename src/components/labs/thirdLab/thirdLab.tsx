@@ -19,6 +19,7 @@ const MAIN_FUNCTION_TEXT = "e^x * sin(x)"
 
 function ThirdLab() {
     const [nodeCount, setNodeCount] = useState<number>(MAX_NODE_COUNT)
+
     const currentXList = X_LIST.slice(0, nodeCount)
 
     const plotXList = useMemo(() => range(1, PLOT_X_COUNT).map((i) => (b - a) / PLOT_X_COUNT * i), [])
